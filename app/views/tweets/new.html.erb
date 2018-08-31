@@ -1,0 +1,14 @@
+<div class="contents row">
+  <div class="container">
+     <%= form_for @tweet do |f| %>
+        <h3 class="z-depth-2 red-text">
+          投稿する、ハンバーグ！！！
+          <h1 class="sound-switch"></h1>
+          <%= audio_tag("han.mp3",id:"audio") %>
+        </h3>
+        <%= f.text_area :image, placeholder: "Image URL" %>
+        <%= f.text_area :text %>
+        <%= f.submit "SENT", class: "btn" %>
+     <% end %>
+  </div>
+</div>

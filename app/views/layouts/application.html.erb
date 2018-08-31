@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hamburg</title>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+      WebFontConfig = {
+        google: { families: [ 'Unica+One::latin' ] }
+      };
+      (function() {
+        var wf = document.createElement('script');
+        wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+          '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+        wf.type = 'text/javascript';
+        wf.async = 'true';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(wf, s);
+      })();
+    </script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  </head>
+
+  <body>
+    <nav class="header">
+      <div class="nav-wrapper">
+        <a href="/" class="brand-logo white-text">Hamburg</a>
+        <% if user_signed_in? %>
+         <div class="user_nav grid-6">
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+              <li>
+                <%= link_to user_path(current_user.id) do %>
+                 <i class="fab fa-jenkins nav-icon"></i>
+                  MY Page
+                <% end %>
+              </li>
+              <li>
+                <%= link_to  destroy_user_session_path do %>
+                 <i class="fas fa-sign-out-alt nav-icon"></i>
+                 Log Out
+                <% end %>
+              </li>
+              <li>
+                <%= link_to new_tweet_path do %>
+                 <i class="fas fa-edit"></i>
+                 Post
+                <% end %>
+              </li>
+            </ul>
+           </span>
+         </div>
+        <% else %>
+          <div class="grid-6 right hide-on-med-and-down">
+            <%= link_to "ログイン", new_user_session_path, class: 'post', class: 'red-text'%>
+            <%= link_to "新規登録", new_user_registration_path, class: 'post', class: 'red-text' %>
+          </div>
+        <% end %>
+    </nav>
+
+     <script type="text/javascript" src="./app.js"></script>
+
+    <%= yield %>
+
+    <footer class="footer">
+        Master of Hamburg
+    </footer>
+  </body>
+</html>
